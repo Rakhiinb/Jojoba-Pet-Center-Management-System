@@ -108,7 +108,7 @@ INSERT INTO customers (name, phone, address) VALUES
     ('Daniel',   '082198765432', 'Jl. Cipacing No. 5, Jatinangor'),
     ('Raffi', '085711223344', 'Perum Griya Asri Blok C3, Jatinangor');
 
--- Hewan: customer_id mengacu ke id customer di atas (1 = Budi, 2 = Siti)
+-- Hewan: customer_id mengacu ke id customer di atas (1 = Rakhi, 2 = Daniel)
 INSERT INTO pets (customer_id, name, species, breed, gender) VALUES
     (1, 'Mochi', 'Kucing',  'Persia',          'Betina'),
     (1, 'Bruno', 'Anjing',  'Golden Retriever','Jantan'),
