@@ -4,17 +4,95 @@
  */
 package projek.jojobapetcentermanagementsystem.view;
 
+import java.awt.Color;
+import java.util.List;
+import java.util.Locale;
+import javax.swing.table.DefaultTableModel;
+import projek.jojobapetcentermanagementsystem.entity.Product;
+import projek.jojobapetcentermanagementsystem.model.DashboardModel;
+import projek.jojobapetcentermanagementsystem.repository.DashboardRepository;
+import projek.jojobapetcentermanagementsystem.repository.ProductRepository;
+
 /**
  *
  * @author ASUS Vivobook Dhifa
  */
-public class DashboardPanel extends javax.swing.JPanel {
+public class DashboardPanel extends javax.swing.JPanel implements Refreshable {
+
+    private static final Locale ID = Locale.forLanguageTag("id-ID");
+
+    private final DashboardRepository dashboardRepo = new DashboardRepository();
+    private final ProductRepository productRepo = new ProductRepository();
+    private DefaultTableModel lowStockModel;
 
     /**
      * Creates new form DashboardPanel
      */
     public DashboardPanel() {
         initComponents();
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        initTable();
+        refresh();
+    }
+
+    /**
+     * Dipanggil MainFrame setiap kali menu Dashboard dipilih (kontrak
+     * Refreshable).
+     */
+    @Override
+    public void refresh() {
+        loadSummary();
+        loadLowStock();
+    }
+
+    // Siapkan tabel stok menipis
+    private void initTable() {
+        lowStockModel = new DefaultTableModel(
+                new Object[]{"ID", "Nama", "Kategori", "Harga", "Stok"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // tabel hanya untuk dilihat
+            }
+        };
+        tblLowStock.setModel(lowStockModel);
+        tblLowStock.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tblLowStock.getColumnModel().getColumn(4).setPreferredWidth(60);
+    }
+
+    // Isi 6 kartu angka
+    private void loadSummary() {
+        DashboardModel m = dashboardRepo.getSummary();
+        lblTotalCustomers.setText(String.valueOf(m.getTotalCustomers()));
+        lblTotalPets.setText(String.valueOf(m.getTotalPets()));
+        lblTotalProducts.setText(String.valueOf(m.getTotalProducts()));
+        lblLowStock.setText(String.valueOf(m.getLowStockCount()));
+        lblTodayTransactions.setText(String.valueOf(m.getTodayTransactions()));
+        lblTodayRevenue.setText(formatRupiah(m.getTodayRevenue()));
+
+        // angka stok menipis jadi merah bila ada produk yang menipis
+        lblLowStock.setForeground(m.getLowStockCount() > 0
+                ? new Color(0xC0392B)
+                : lblTotalCustomers.getForeground());
+    }
+
+    // Isi tabel produk stok menipis
+    private void loadLowStock() {
+        lowStockModel.setRowCount(0);
+        List<Product> list = productRepo.findLowStock();
+        for (Product p : list) {
+            lowStockModel.addRow(new Object[]{
+                p.getId(),
+                p.getName(),
+                p.getCategory(),
+                formatRupiah(p.getPrice()),
+                p.getStock()
+            });
+        }
+    }
+
+    // Contoh: 1250000 menjadi "Rp 1.250.000"
+    private String formatRupiah(double value) {
+        return String.format(ID, "Rp %,.0f", value);
     }
 
     /**
