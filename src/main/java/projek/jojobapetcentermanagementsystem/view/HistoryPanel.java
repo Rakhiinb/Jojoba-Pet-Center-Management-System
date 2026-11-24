@@ -56,17 +56,17 @@ public class HistoryPanel extends javax.swing.JPanel implements Refreshable {
         refresh();
     }
 
-    private void cariButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void cariButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariButtonActionPerformed
         refresh();
-    }
+    }//GEN-LAST:event_cariButtonActionPerformed
 
-    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         fromField.setText("");
         toField.setText("");
         refresh();
-    }
+    }//GEN-LAST:event_resetButtonActionPerformed
 
-    private void transactionTableValueChanged(javax.swing.event.ListSelectionEvent evt) {
+    private void transactionTableValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_transactionTableValueChanged
         if (evt.getValueIsAdjusting()) {
             return;
         }
@@ -76,7 +76,7 @@ public class HistoryPanel extends javax.swing.JPanel implements Refreshable {
             return;
         }
         loadItems((Integer) transactionModel.getValueAt(row, 0));
-    }
+    }//GEN-LAST:event_transactionTableValueChanged
 
     /** Memuat ulang tabel sesuai rentang tanggal di filter; MainFrame memanggil ini saat menu dipilih. */
     @Override

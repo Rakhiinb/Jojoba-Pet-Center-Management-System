@@ -62,33 +62,33 @@ public class CashierPanel extends javax.swing.JPanel implements Refreshable {
         refresh();
     }
 
-    private void cmbCustomerActionPerformed(java.awt.event.ActionEvent evt) {
+    private void cmbCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCustomerActionPerformed
         loadPets();
-    }
+    }//GEN-LAST:event_cmbCustomerActionPerformed
 
-    private void cmbItemTypeActionPerformed(java.awt.event.ActionEvent evt) {
+    private void cmbItemTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbItemTypeActionPerformed
         loadItems();
-    }
+    }//GEN-LAST:event_cmbItemTypeActionPerformed
 
-    private void cmbItemActionPerformed(java.awt.event.ActionEvent evt) {
+    private void cmbItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbItemActionPerformed
         updateStockHint();
-    }
+    }//GEN-LAST:event_cmbItemActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         addToCart();
-    }
+    }//GEN-LAST:event_btnAddActionPerformed
 
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         removeFromCart();
-    }
+    }//GEN-LAST:event_btnRemoveActionPerformed
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         saveTransaction();
-    }
+    }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         resetCart();
-    }
+    }//GEN-LAST:event_btnResetActionPerformed
 
     /** Memberi teks pengganti pada pilihan null di JComboBox. */
     private static void installPlaceholderRenderer(javax.swing.JComboBox<?> combo, String placeholder) {
