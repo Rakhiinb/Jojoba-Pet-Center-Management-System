@@ -467,4 +467,4 @@ Tim terdiri dari 3 orang. Transaksi dipegang satu orang karena bagian paling kom
 
 ## Status
 
-**Design & Requirement Analysis selesai.** Project NetBeans sudah dibuat; tahap berikutnya adalah pembuatan fondasi (database dan class dasar), lalu pengerjaan paralel tiap anggota.
+**On the way to D5** Projek ini dari segi MVP sudah selesai!
