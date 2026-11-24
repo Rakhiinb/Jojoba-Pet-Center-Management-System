@@ -23,7 +23,11 @@ import projek.jojobapetcentermanagementsystem.repository.ProductRepository;
 import projek.jojobapetcentermanagementsystem.repository.ServiceRepository;
 import projek.jojobapetcentermanagementsystem.repository.TransactionRepository;
 
-/** Tab Kasir: merakit keranjang transaksi lalu menyimpannya secara atomik. */
+/**
+ * Tab Kasir: merakit keranjang transaksi lalu menyimpannya secara atomik.
+ *
+ * @author Raffi Fauzan (140810250067)
+ */
 public class CashierPanel extends javax.swing.JPanel implements Refreshable {
 
     private static final NumberFormat RUPIAH = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
