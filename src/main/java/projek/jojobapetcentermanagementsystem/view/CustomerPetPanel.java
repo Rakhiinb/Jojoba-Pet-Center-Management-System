@@ -81,8 +81,6 @@ public class CustomerPetPanel extends javax.swing.JPanel implements Refreshable 
         jLabel9 = new javax.swing.JLabel();
         cmbSpecies = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        txtPetBreed = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cmbGender = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
@@ -244,15 +242,6 @@ public class CustomerPetPanel extends javax.swing.JPanel implements Refreshable 
 
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 12, 5));
 
-        jLabel10.setText("Ras");
-        jLabel10.setPreferredSize(new java.awt.Dimension(70, 20));
-        jLabel10.setRequestFocusEnabled(false);
-        jPanel6.add(jLabel10);
-
-        txtPetBreed.setColumns(25);
-        txtPetBreed.addActionListener(this::txtPetBreedActionPerformed);
-        jPanel6.add(txtPetBreed);
-
         jLabel11.setText("Jenis Kelamin");
         jLabel11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 30, 1, 1));
         jLabel11.setPreferredSize(new java.awt.Dimension(120, 20));
@@ -310,10 +299,6 @@ public class CustomerPetPanel extends javax.swing.JPanel implements Refreshable 
     private void txtPetNameActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
     }                                          
-
-    private void txtPetBreedActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
-    }                                           
 
     private void btnAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {                                               
         Customer c = readCustomerForm();
@@ -456,7 +441,7 @@ public class CustomerPetPanel extends javax.swing.JPanel implements Refreshable 
             }
         });
 
-        petModel = createReadOnlyModel(new String[]{"ID", "Nama", "Jenis", "Ras", "Jenis Kelamin"});
+        petModel = createReadOnlyModel(new String[]{"ID", "Nama", "Jenis", "Jenis Kelamin"});
         tblPet.setModel(petModel);
         tblPet.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tblPet.getSelectionModel().addListSelectionListener(e -> {
@@ -526,8 +511,7 @@ public class CustomerPetPanel extends javax.swing.JPanel implements Refreshable 
         petModel.setRowCount(0);
         if (customerId > 0) {
             for (Pet p : petRepo.findByCustomer(customerId)) {
-                petModel.addRow(new Object[]{p.getId(), p.getName(), p.getSpecies(),
-                    p.getBreed(), p.getGender()});
+                petModel.addRow(new Object[]{p.getId(), p.getName(), p.getSpecies(), p.getGender()});
             }
         }
         loading = false;
@@ -557,8 +541,7 @@ public class CustomerPetPanel extends javax.swing.JPanel implements Refreshable 
         }
         txtPetName.setText(str(petModel.getValueAt(row, 1)));
         cmbSpecies.setSelectedItem(str(petModel.getValueAt(row, 2)));
-        txtPetBreed.setText(str(petModel.getValueAt(row, 3)));
-        cmbGender.setSelectedItem(str(petModel.getValueAt(row, 4)));
+        cmbGender.setSelectedItem(str(petModel.getValueAt(row, 3)));
     }
 
     private int selectedCustomerId() {
@@ -603,7 +586,6 @@ public class CustomerPetPanel extends javax.swing.JPanel implements Refreshable 
         p.setCustomerId(customerId);
         p.setName(name);
         p.setSpecies(species);
-        p.setBreed(txtPetBreed.getText().trim());
         p.setGender(gender);
         return p;
     }
@@ -619,7 +601,6 @@ public class CustomerPetPanel extends javax.swing.JPanel implements Refreshable 
 
     private void clearPetForm() {
         txtPetName.setText("");
-        txtPetBreed.setText("");
         cmbSpecies.setSelectedIndex(0);
         cmbGender.setSelectedIndex(0);
     }
@@ -660,7 +641,6 @@ public class CustomerPetPanel extends javax.swing.JPanel implements Refreshable 
     private javax.swing.JComboBox<String> cmbGender;
     private javax.swing.JComboBox<String> cmbSpecies;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
@@ -686,7 +666,6 @@ public class CustomerPetPanel extends javax.swing.JPanel implements Refreshable 
     private javax.swing.JTextField txtCustAddress;
     private javax.swing.JTextField txtCustName;
     private javax.swing.JTextField txtCustPhone;
-    private javax.swing.JTextField txtPetBreed;
     private javax.swing.JTextField txtPetName;
     private javax.swing.JTextField txtSearch;
 }

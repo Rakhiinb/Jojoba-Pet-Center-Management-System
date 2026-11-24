@@ -15,7 +15,7 @@ import java.util.List;
 public class PetRepository implements CrudRepository<Pet> {
 
     private static final String SELECT =
-            "SELECT id, customer_id, name, species, breed, gender FROM pets";
+            "SELECT id, customer_id, name, species, gender FROM pets";
 
     @Override
     public List<Pet> findAll() {
@@ -71,7 +71,7 @@ public class PetRepository implements CrudRepository<Pet> {
     /** Semua hewan beserta nama pemiliknya (JOIN pets dan customers). */
     public List<PetModel> findAllWithOwner() {
         List<PetModel> result = new ArrayList<>();
-        String sql = "SELECT p.id, p.name, p.species, p.breed, p.gender, c.name AS owner_name "
+        String sql = "SELECT p.id, p.name, p.species, p.gender, c.name AS owner_name "
                 + "FROM pets p JOIN customers c ON p.customer_id = c.id "
                 + "ORDER BY p.name";
         try (Connection conn = DatabaseUtil.getConnection();
@@ -82,7 +82,6 @@ public class PetRepository implements CrudRepository<Pet> {
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("species"),
-                        rs.getString("breed"),
                         rs.getString("gender"),
                         rs.getString("owner_name")));
             }
@@ -95,14 +94,13 @@ public class PetRepository implements CrudRepository<Pet> {
     /** Menyimpan hewan baru; bila berhasil, id hasil auto-increment diisi ke objek. */
     @Override
     public boolean save(Pet pet) {
-        String sql = "INSERT INTO pets (customer_id, name, species, breed, gender) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pets (customer_id, name, species, gender) VALUES (?, ?, ?, ?)";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, pet.getCustomerId());
             ps.setString(2, pet.getName());
             ps.setString(3, pet.getSpecies());
-            ps.setString(4, pet.getBreed());
-            ps.setString(5, pet.getGender());
+            ps.setString(4, pet.getGender());
             if (ps.executeUpdate() > 0) {
                 try (ResultSet keys = ps.getGeneratedKeys()) {
                     if (keys.next()) {
@@ -119,14 +117,13 @@ public class PetRepository implements CrudRepository<Pet> {
 
     @Override
     public boolean update(Pet pet) {
-        String sql = "UPDATE pets SET name = ?, species = ?, breed = ?, gender = ? WHERE id = ?";
+        String sql = "UPDATE pets SET name = ?, species = ?, gender = ? WHERE id = ?";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, pet.getName());
             ps.setString(2, pet.getSpecies());
-            ps.setString(3, pet.getBreed());
-            ps.setString(4, pet.getGender());
-            ps.setInt(5, pet.getId());
+            ps.setString(3, pet.getGender());
+            ps.setInt(4, pet.getId());
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -156,7 +153,6 @@ public class PetRepository implements CrudRepository<Pet> {
                 rs.getInt("customer_id"),
                 rs.getString("name"),
                 rs.getString("species"),
-                rs.getString("breed"),
                 rs.getString("gender"));
     }
 }

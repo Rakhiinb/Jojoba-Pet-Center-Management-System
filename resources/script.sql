@@ -41,7 +41,6 @@ CREATE TABLE pets (
     customer_id INT          NOT NULL,
     name        VARCHAR(100) NOT NULL,
     species     VARCHAR(50)  NOT NULL,
-    breed       VARCHAR(100),
     gender      VARCHAR(10)  NOT NULL,            -- 'Jantan' atau 'Betina'
     FOREIGN KEY (customer_id) REFERENCES customers(id)
 ) ENGINE=InnoDB;
@@ -109,8 +108,8 @@ INSERT INTO customers (name, phone, address) VALUES
     ('Raffi', '085711223344', 'Perum Griya Asri Blok C3, Jatinangor');
 
 -- Hewan: customer_id mengacu ke id customer di atas (1 = Rakhi, 2 = Daniel)
-INSERT INTO pets (customer_id, name, species, breed, gender) VALUES
-    (1, 'Mochi', 'Kucing',  'Persia',          'Betina'),
-    (1, 'Bruno', 'Anjing',  'Golden Retriever','Jantan'),
-    (2, 'Luna',  'Kucing',  'Domestik',        'Betina'),
-    (2, 'Coco',  'Kelinci', 'Holland Lop',     'Jantan');
+INSERT INTO pets (customer_id, name, species, gender) VALUES
+    (1, 'Mochi', 'Kucing',  'Betina'),
+    (1, 'Bruno', 'Anjing',  'Jantan'),
+    (2, 'Luna',  'Kucing',  'Betina'),
+    (2, 'Coco',  'Kelinci', 'Jantan');

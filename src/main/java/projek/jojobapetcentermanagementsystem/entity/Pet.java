@@ -6,28 +6,25 @@ public class Pet extends BaseEntity implements Searchable {
     private int customerId;
     private String name;
     private String species;
-    private String breed;
     private String gender;
 
     public Pet() {
     }
 
     /** Constructor tanpa id: untuk data baru yang belum disimpan. */
-    public Pet(int customerId, String name, String species, String breed, String gender) {
+    public Pet(int customerId, String name, String species, String gender) {
         this.customerId = customerId;
         this.name = name;
         this.species = species;
-        this.breed = breed;
         this.gender = gender;
     }
 
     /** Constructor dengan id: untuk data yang dibaca dari database. */
-    public Pet(int id, int customerId, String name, String species, String breed, String gender) {
+    public Pet(int id, int customerId, String name, String species, String gender) {
         super(id);
         this.customerId = customerId;
         this.name = name;
         this.species = species;
-        this.breed = breed;
         this.gender = gender;
     }
 
@@ -55,14 +52,6 @@ public class Pet extends BaseEntity implements Searchable {
         this.species = species;
     }
 
-    public String getBreed() {
-        return breed;
-    }
-
-    public void setBreed(String breed) {
-        this.breed = breed;
-    }
-
     public String getGender() {
         return gender;
     }
@@ -77,7 +66,7 @@ public class Pet extends BaseEntity implements Searchable {
             return true;
         }
         String key = keyword.trim().toLowerCase();
-        return contains(name, key) || contains(species, key) || contains(breed, key);
+        return contains(name, key) || contains(species, key);
     }
 
     private static boolean contains(String text, String lowerKey) {

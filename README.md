@@ -37,7 +37,7 @@ Halaman ringkasan yang tampil pertama kali saat aplikasi dibuka, untuk memberi g
 Mengelola pemilik beserta hewan peliharaannya dalam satu layar, karena keduanya selalu berkaitan.
 
 - **Tabel atas, data customer:** tambah, ubah, dan hapus customer (nama, telepon, alamat), serta cari customer berdasarkan kata kunci.
-- **Tabel bawah, hewan milik customer terpilih:** saat satu customer dipilih, hewan miliknya langsung tampil di tabel bawah. Dari sana admin dapat menambah, mengubah, dan menghapus hewan (nama, jenis, ras, jenis kelamin).
+- **Tabel bawah, hewan milik customer terpilih:** saat satu customer dipilih, hewan miliknya langsung tampil di tabel bawah. Dari sana admin dapat menambah, mengubah, dan menghapus hewan (nama, jenis, jenis kelamin).
 - **Validasi:** nama dan telepon customer wajib diisi; nama, jenis, dan jenis kelamin hewan wajib diisi. Hewan hanya bisa ditambahkan bila sudah ada customer yang dipilih.
 - **Perlindungan data:** customer yang masih punya hewan atau transaksi, dan hewan yang sudah muncul di transaksi, tidak bisa dihapus. Aplikasi menampilkan pesan yang jelas, bukan error.
 
@@ -163,7 +163,7 @@ Jojoba-Pet-Center-Management-System/
 | `Billable` | interface | - | `getItemId()`, `getItemType()`, `getItemName()`, `getPrice()` |
 | `Searchable` | interface | - | `matches(String keyword)` |
 | `Customer` | extends `BaseEntity`, implements `Searchable` | `name`, `phone`, `address` | `matches`, `toString` |
-| `Pet` | extends `BaseEntity`, implements `Searchable` | `customerId`, `name`, `species`, `breed`, `gender` | `matches`, `toString` |
+| `Pet` | extends `BaseEntity`, implements `Searchable` | `customerId`, `name`, `species`, `gender` | `matches`, `toString` |
 | `Item` | abstract, extends `BaseEntity`, implements `Billable` | `name`, `price` | abstract `getInfo()`, `getItemId()`, `getItemName()`, `getPrice()` |
 | `Product` | extends `Item`, implements `Searchable` | `category`, `stock`, konstanta `LOW_STOCK_LIMIT = 5` | `getInfo()`, `getItemType()` = `"PRODUCT"`, `matches`, `isLowStock()`, `reduceStock(int)` |
 | `Service` | extends `Item` | `unit` | `getInfo()`, `getItemType()` = `"SERVICE"`, `getItemName()` (menyertakan satuan) |
@@ -176,7 +176,7 @@ Jojoba-Pet-Center-Management-System/
 
 | Class | Atribut | Dipakai di | Asal data |
 | ----- | ------- | ---------- | --------- |
-| `PetModel` | `id`, `name`, `species`, `breed`, `gender`, `ownerName` | Dropdown hewan di Kasir | `JOIN` `pets` dan `customers` |
+| `PetModel` | `id`, `name`, `species`, `gender`, `ownerName` | Dropdown hewan di Kasir | `JOIN` `pets` dan `customers` |
 | `TransactionModel` | `id`, `date`, `customerName` (atau "Umum"), `petName` (atau "-"), `total` | Tabel Riwayat | `JOIN` `transactions`, `customers`, `pets` |
 | `DashboardModel` | `totalCustomers`, `totalPets`, `totalProducts`, `lowStockCount`, `todayTransactions`, `todayRevenue` | Dashboard | query agregat |
 
@@ -240,7 +240,6 @@ classDiagram
         -int customerId
         -String name
         -String species
-        -String breed
         -String gender
         +matches(String keyword) boolean
     }
@@ -350,7 +349,6 @@ Hewan peliharaan milik customer. Entity: `Pet`; tampilan gabungan dengan nama pe
 | `customer_id` | `INT` | NOT NULL, FK → `customers.id` | Pemilik hewan |
 | `name` | `VARCHAR(100)` | NOT NULL | Nama hewan |
 | `species` | `VARCHAR(50)` | NOT NULL | Jenis (kucing, anjing, dan seterusnya) |
-| `breed` | `VARCHAR(100)` | NULL | Ras (opsional) |
 | `gender` | `VARCHAR(10)` | NOT NULL | `Jantan` atau `Betina` |
 
 #### 3. `products`
