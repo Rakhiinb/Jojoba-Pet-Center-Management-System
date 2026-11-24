@@ -26,34 +26,30 @@ public class CustomerPetPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jSplitPane1 = new javax.swing.JSplitPane();
         pnlCustomer = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCustomer = new javax.swing.JTable();
         pnlCustForm = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        txtCustName = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtCustPhone = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtCustAddress = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
+        btnAddCustomer = new javax.swing.JButton();
+        btnUpdateCustomer = new javax.swing.JButton();
+        btnDeleteCustomer = new javax.swing.JButton();
+        btnClearCustomer = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        btnShowAll = new javax.swing.JButton();
         pnlPet = new javax.swing.JPanel();
-
-        jLabel1.setText("Nama");
-
-        jTextField1.addActionListener(this::jTextField1ActionPerformed);
-
-        jLabel2.setText("Alamat");
-
-        jLabel3.setText("No Telepon");
-
-        jLabel4.setText("Alamat");
-
-        jLabel5.setText("Alamat");
 
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(new java.awt.BorderLayout());
@@ -83,16 +79,66 @@ public class CustomerPetPanel extends javax.swing.JPanel {
         pnlCustForm.setPreferredSize(new java.awt.Dimension(640, 140));
         pnlCustForm.setLayout(new java.awt.GridLayout(4, 1, 0, 4));
 
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 5));
+
+        jLabel6.setText("Nama");
+        jPanel1.add(jLabel6);
+
+        txtCustName.setColumns(15);
+        txtCustName.addActionListener(this::txtCustNameActionPerformed);
+        jPanel1.add(txtCustName);
+
+        jLabel7.setText("No Telepon");
+        jLabel7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        jPanel1.add(jLabel7);
+
+        txtCustPhone.setColumns(12);
+        jPanel1.add(txtCustPhone);
+
         pnlCustForm.add(jPanel1);
 
-        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 5));
+
+        jLabel1.setText("Alamat");
+        jPanel2.add(jLabel1);
+
+        txtCustAddress.setColumns(40);
+        txtCustAddress.addActionListener(this::txtCustAddressActionPerformed);
+        jPanel2.add(txtCustAddress);
+
         pnlCustForm.add(jPanel2);
 
-        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 5));
+
+        btnAddCustomer.setText("Tambah");
+        jPanel3.add(btnAddCustomer);
+
+        btnUpdateCustomer.setText("Ubah");
+        jPanel3.add(btnUpdateCustomer);
+
+        btnDeleteCustomer.setText("Hapus");
+        jPanel3.add(btnDeleteCustomer);
+
+        btnClearCustomer.setText("Bersihkan");
+        jPanel3.add(btnClearCustomer);
+
         pnlCustForm.add(jPanel3);
 
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 5));
+
+        jLabel2.setText("Cari Customer:");
+        jPanel4.add(jLabel2);
+
+        txtSearch.setColumns(15);
+        txtSearch.addActionListener(this::txtSearchActionPerformed);
+        jPanel4.add(txtSearch);
+
+        btnSearch.setText("Cari");
+        jPanel4.add(btnSearch);
+
+        btnShowAll.setText("Tampilkan Semua");
+        jPanel4.add(btnShowAll);
+
         pnlCustForm.add(jPanel4);
 
         pnlCustomer.add(pnlCustForm, java.awt.BorderLayout.PAGE_START);
@@ -106,27 +152,43 @@ public class CustomerPetPanel extends javax.swing.JPanel {
         add(jSplitPane1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtCustNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCustNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtCustNameActionPerformed
+
+    private void txtCustAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCustAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCustAddressActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddCustomer;
+    private javax.swing.JButton btnClearCustomer;
+    private javax.swing.JButton btnDeleteCustomer;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnShowAll;
+    private javax.swing.JButton btnUpdateCustomer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel pnlCustForm;
     private javax.swing.JPanel pnlCustomer;
     private javax.swing.JPanel pnlPet;
     private javax.swing.JTable tblCustomer;
+    private javax.swing.JTextField txtCustAddress;
+    private javax.swing.JTextField txtCustName;
+    private javax.swing.JTextField txtCustPhone;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
