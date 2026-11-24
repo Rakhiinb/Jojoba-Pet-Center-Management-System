@@ -9,15 +9,13 @@ public class PetModel {
     private final int id;
     private final String name;
     private final String species;
-    private final String breed;
     private final String gender;
     private final String ownerName;
 
-    public PetModel(int id, String name, String species, String breed, String gender, String ownerName) {
+    public PetModel(int id, String name, String species, String gender, String ownerName) {
         this.id = id;
         this.name = name;
         this.species = species;
-        this.breed = breed;
         this.gender = gender;
         this.ownerName = ownerName;
     }
@@ -32,10 +30,6 @@ public class PetModel {
 
     public String getSpecies() {
         return species;
-    }
-
-    public String getBreed() {
-        return breed;
     }
 
     public String getGender() {
