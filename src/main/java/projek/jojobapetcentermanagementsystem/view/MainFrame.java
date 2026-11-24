@@ -75,8 +75,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void initContentPanels() {
-        registerPanel("DASHBOARD", createPlaceholder("Dashboard (Menunggu DashboardPanel Orang 1)"));
-        registerPanel("CUSTOMER_PET", createPlaceholder("Customer & Hewan (Menunggu CustomerPetPanel Orang 1)"));
+        registerPanel("DASHBOARD", new DashboardPanel());
+        registerPanel("CUSTOMER_PET", new CustomerPetPanel());
         registerPanel("PRODUCT", new ProductPanel());
         registerPanel("SERVICE", new ServicePanel());
         registerPanel("TRANSACTION", createPlaceholder("Transaksi (Menunggu TransactionPanel Orang 3)"));
