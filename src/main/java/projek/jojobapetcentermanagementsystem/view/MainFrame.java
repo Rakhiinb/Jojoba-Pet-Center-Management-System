@@ -6,9 +6,14 @@ package projek.jojobapetcentermanagementsystem.view;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -27,9 +32,46 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
-        setLocationRelativeTo(null);
+        setupResponsiveLayout();
         initContentPanels();
         showPanel("DASHBOARD");
+    }
+
+    private void setupResponsiveLayout() {
+        getContentPane().removeAll();
+        getContentPane().setLayout(new BorderLayout());
+
+        panelSidebar.removeAll();
+        panelSidebar.setBackground(new Color(45, 55, 72));
+        panelSidebar.setPreferredSize(new Dimension(220, 650));
+        panelSidebar.setBorder(BorderFactory.createEmptyBorder(25, 20, 25, 20));
+        panelSidebar.setLayout(new GridLayout(6, 1, 0, 15));
+
+        JButton[] navButtons = {
+            btnNavDashboard,
+            btnNavCustomerPet,
+            btnNavProduct,
+            btnNavService,
+            btnNavTransaction,
+            btnNavHistory
+        };
+
+        for (JButton btn : navButtons) {
+            btn.setFont(new Font("SansSerif", Font.BOLD, 13));
+            btn.setFocusPainted(false);
+            panelSidebar.add(btn);
+        }
+
+        panelContent.removeAll();
+        panelContent.setLayout(new CardLayout());
+
+        getContentPane().add(panelSidebar, BorderLayout.WEST);
+        getContentPane().add(panelContent, BorderLayout.CENTER);
+
+        setSize(1050, 650);
+        setLocationRelativeTo(null);
+        revalidate();
+        repaint();
     }
     
     private void initContentPanels() {
@@ -38,8 +80,9 @@ public class MainFrame extends javax.swing.JFrame {
         registerPanel("PRODUCT", new ProductPanel());
         registerPanel("SERVICE", new ServicePanel());
         registerPanel("TRANSACTION", createPlaceholder("Transaksi (Menunggu TransactionPanel Orang 3)"));
+        registerPanel("HISTORY", createPlaceholder("Riwayat Transaksi (Menunggu HistoryPanel Orang 3)"));
     }
-    
+
     private void registerPanel(String key, JPanel panel) {
         panels.put(key, panel);
         panelContent.add(panel, key);
@@ -116,12 +159,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addGroup(panelSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnNavHistory, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                    .addGroup(panelSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnNavTransaction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnNavService, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnNavDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnNavCustomerPet, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                        .addComponent(btnNavProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnNavTransaction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNavService, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNavDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNavCustomerPet, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                    .addComponent(btnNavProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         panelSidebarLayout.setVerticalGroup(
@@ -152,7 +194,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(panelSidebar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelContent, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(4497, Short.MAX_VALUE))
+                .addContainerGap(723, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
