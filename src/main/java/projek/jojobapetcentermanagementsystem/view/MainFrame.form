@@ -60,7 +60,6 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnNavHistory" pref="177" max="32767" attributes="0"/>
                       <Component id="btnNavTransaction" max="32767" attributes="0"/>
                       <Component id="btnNavService" max="32767" attributes="0"/>
                       <Component id="btnNavDashboard" max="32767" attributes="0"/>
@@ -84,8 +83,6 @@
                   <Component id="btnNavService" min="-2" pref="65" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   <Component id="btnNavTransaction" min="-2" pref="65" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                  <Component id="btnNavHistory" min="-2" pref="65" max="-2" attributes="0"/>
                   <EmptySpace pref="87" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -130,14 +127,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNavTransactionActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnNavHistory">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Riwayat"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNavHistoryActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

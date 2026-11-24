@@ -45,15 +45,14 @@ public class MainFrame extends javax.swing.JFrame {
         panelSidebar.setBackground(new Color(45, 55, 72));
         panelSidebar.setPreferredSize(new Dimension(220, 650));
         panelSidebar.setBorder(BorderFactory.createEmptyBorder(25, 20, 25, 20));
-        panelSidebar.setLayout(new GridLayout(6, 1, 0, 15));
+        panelSidebar.setLayout(new GridLayout(5, 1, 0, 15));
 
         JButton[] navButtons = {
             btnNavDashboard,
             btnNavCustomerPet,
             btnNavProduct,
             btnNavService,
-            btnNavTransaction,
-            btnNavHistory
+            btnNavTransaction
         };
 
         for (JButton btn : navButtons) {
@@ -79,8 +78,7 @@ public class MainFrame extends javax.swing.JFrame {
         registerPanel("CUSTOMER_PET", createPlaceholder("Customer & Hewan (Menunggu CustomerPetPanel Orang 1)"));
         registerPanel("PRODUCT", new ProductPanel());
         registerPanel("SERVICE", new ServicePanel());
-        registerPanel("TRANSACTION", createPlaceholder("Transaksi (Menunggu TransactionPanel Orang 3)"));
-        registerPanel("HISTORY", createPlaceholder("Riwayat Transaksi (Menunggu HistoryPanel Orang 3)"));
+        registerPanel("TRANSACTION", new TransactionPanel());
     }
 
     private void registerPanel(String key, JPanel panel) {
@@ -120,7 +118,6 @@ public class MainFrame extends javax.swing.JFrame {
         btnNavProduct = new javax.swing.JButton();
         btnNavService = new javax.swing.JButton();
         btnNavTransaction = new javax.swing.JButton();
-        btnNavHistory = new javax.swing.JButton();
         panelContent = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -148,9 +145,6 @@ public class MainFrame extends javax.swing.JFrame {
         btnNavTransaction.setText("Transaksi");
         btnNavTransaction.addActionListener(this::btnNavTransactionActionPerformed);
 
-        btnNavHistory.setText("Riwayat");
-        btnNavHistory.addActionListener(this::btnNavHistoryActionPerformed);
-
         javax.swing.GroupLayout panelSidebarLayout = new javax.swing.GroupLayout(panelSidebar);
         panelSidebar.setLayout(panelSidebarLayout);
         panelSidebarLayout.setHorizontalGroup(
@@ -158,7 +152,6 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(panelSidebarLayout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addGroup(panelSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnNavHistory, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                     .addComponent(btnNavTransaction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNavService, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNavDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -179,8 +172,6 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(btnNavService, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
                 .addComponent(btnNavTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
-                .addComponent(btnNavHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(87, Short.MAX_VALUE))
         );
 
@@ -238,11 +229,6 @@ public class MainFrame extends javax.swing.JFrame {
         showPanel("TRANSACTION");
     }//GEN-LAST:event_btnNavTransactionActionPerformed
 
-    private void btnNavHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavHistoryActionPerformed
-        // TODO add your handling code here:
-        showPanel("HISTORY");
-    }//GEN-LAST:event_btnNavHistoryActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -281,7 +267,6 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNavCustomerPet;
     private javax.swing.JButton btnNavDashboard;
-    private javax.swing.JButton btnNavHistory;
     private javax.swing.JButton btnNavProduct;
     private javax.swing.JButton btnNavService;
     private javax.swing.JButton btnNavTransaction;
