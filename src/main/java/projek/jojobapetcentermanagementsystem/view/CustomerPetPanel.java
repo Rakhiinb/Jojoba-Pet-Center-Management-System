@@ -133,18 +133,22 @@ public class CustomerPetPanel extends javax.swing.JPanel {
 
         btnAddCustomer.setText("Tambah");
         btnAddCustomer.setPreferredSize(new java.awt.Dimension(110, 23));
+        btnAddCustomer.addActionListener(this::btnAddCustomerActionPerformed);
         jPanel3.add(btnAddCustomer);
 
         btnUpdateCustomer.setText("Ubah");
         btnUpdateCustomer.setPreferredSize(new java.awt.Dimension(110, 23));
+        btnUpdateCustomer.addActionListener(this::btnUpdateCustomerActionPerformed);
         jPanel3.add(btnUpdateCustomer);
 
         btnDeleteCustomer.setText("Hapus");
         btnDeleteCustomer.setPreferredSize(new java.awt.Dimension(110, 23));
+        btnDeleteCustomer.addActionListener(this::btnDeleteCustomerActionPerformed);
         jPanel3.add(btnDeleteCustomer);
 
         btnClearCustomer.setText("Bersihkan");
         btnClearCustomer.setPreferredSize(new java.awt.Dimension(110, 23));
+        btnClearCustomer.addActionListener(this::btnClearCustomerActionPerformed);
         jPanel3.add(btnClearCustomer);
 
         pnlCustForm.add(jPanel3);
@@ -160,9 +164,11 @@ public class CustomerPetPanel extends javax.swing.JPanel {
 
         btnSearch.setText("Cari");
         btnSearch.setPreferredSize(new java.awt.Dimension(90, 23));
+        btnSearch.addActionListener(this::btnSearchActionPerformed);
         jPanel4.add(btnSearch);
 
         btnShowAll.setText("Tampilkan Semua");
+        btnShowAll.addActionListener(this::btnShowAllActionPerformed);
         jPanel4.add(btnShowAll);
 
         pnlCustForm.add(jPanel4);
@@ -240,18 +246,22 @@ public class CustomerPetPanel extends javax.swing.JPanel {
 
         btnAddPet.setText("Tambah");
         btnAddPet.setPreferredSize(new java.awt.Dimension(110, 23));
+        btnAddPet.addActionListener(this::btnAddPetActionPerformed);
         jPanel7.add(btnAddPet);
 
         btnUpdatePet.setText("Ubah");
         btnUpdatePet.setPreferredSize(new java.awt.Dimension(110, 23));
+        btnUpdatePet.addActionListener(this::btnUpdatePetActionPerformed);
         jPanel7.add(btnUpdatePet);
 
         btnDeletePet.setText("Hapus");
         btnDeletePet.setPreferredSize(new java.awt.Dimension(110, 23));
+        btnDeletePet.addActionListener(this::btnDeletePetActionPerformed);
         jPanel7.add(btnDeletePet);
 
         btnClearPet.setText("Bersihkan");
         btnClearPet.setPreferredSize(new java.awt.Dimension(110, 23));
+        btnClearPet.addActionListener(this::btnClearPetActionPerformed);
         jPanel7.add(btnClearPet);
 
         pnlPetForm.add(jPanel7);
@@ -282,6 +292,46 @@ public class CustomerPetPanel extends javax.swing.JPanel {
     private void txtPetBreedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPetBreedActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPetBreedActionPerformed
+
+    private void btnAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCustomerActionPerformed
+
+    private void btnUpdateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCustomerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateCustomerActionPerformed
+
+    private void btnDeleteCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCustomerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteCustomerActionPerformed
+
+    private void btnClearCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearCustomerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClearCustomerActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnShowAllActionPerformed
+
+    private void btnAddPetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddPetActionPerformed
+
+    private void btnUpdatePetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdatePetActionPerformed
+
+    private void btnDeletePetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeletePetActionPerformed
+
+    private void btnClearPetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearPetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClearPetActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
