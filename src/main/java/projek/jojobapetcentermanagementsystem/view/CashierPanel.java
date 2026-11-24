@@ -1,27 +1,13 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
 package projek.jojobapetcentermanagementsystem.view;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.text.NumberFormat;
 import java.util.Locale;
-import javax.swing.BorderFactory;
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import projek.jojobapetcentermanagementsystem.entity.Billable;
@@ -38,7 +24,7 @@ import projek.jojobapetcentermanagementsystem.repository.ServiceRepository;
 import projek.jojobapetcentermanagementsystem.repository.TransactionRepository;
 
 /** Tab Kasir: merakit keranjang transaksi lalu menyimpannya secara atomik. */
-public class CashierPanel extends JPanel implements Refreshable {
+public class CashierPanel extends javax.swing.JPanel implements Refreshable {
 
     private static final NumberFormat RUPIAH = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
 
@@ -48,14 +34,6 @@ public class CashierPanel extends JPanel implements Refreshable {
     private final ServiceRepository serviceRepo = new ServiceRepository();
     private final TransactionRepository transactionRepo = new TransactionRepository();
 
-    private final JComboBox<Customer> cmbCustomer = new JComboBox<>();
-    private final JComboBox<Pet> cmbPet = new JComboBox<>();
-    private final JComboBox<String> cmbItemType = new JComboBox<>(new String[] {"Produk", "Layanan"});
-    private final JComboBox<Billable> cmbItem = new JComboBox<>();
-    private final JSpinner spnQuantity = new JSpinner(new SpinnerNumberModel(1, 1, 999, 1));
-    private final JLabel lblStock = new JLabel("Stok tersedia: -");
-    private final JTextArea txtNotes = new JTextArea(2, 24);
-
     private final DefaultTableModel cartModel = new DefaultTableModel(
             new Object[] {"Jenis", "Nama", "Harga", "Jumlah", "Subtotal"}, 0) {
         @Override
@@ -63,94 +41,56 @@ public class CashierPanel extends JPanel implements Refreshable {
             return false;
         }
     };
-    private final JTable tblCart = new JTable(cartModel);
-    private final JLabel lblTotal = new JLabel("Total: " + RUPIAH.format(0));
 
     private Transaction current = new Transaction();
 
-    /** Menyusun form, keranjang, dan tombol aksi Kasir. */
+    /**
+     * Creates new form CashierPanel.
+     * Menyusun form, keranjang, dan tombol aksi Kasir.
+     */
     public CashierPanel() {
-        setPreferredSize(new Dimension(800, 600));
-        setLayout(new BorderLayout(8, 8));
-        setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
-
-        add(buildForm(), BorderLayout.NORTH);
-        add(new JScrollPane(tblCart), BorderLayout.CENTER);
-        add(buildActions(), BorderLayout.SOUTH);
-
+        initComponents();
         installPlaceholderRenderer(cmbCustomer, "- Pembeli Umum -");
         installPlaceholderRenderer(cmbPet, "- Tanpa Hewan -");
-
-        cmbCustomer.addActionListener(e -> loadPets());
-        cmbItemType.addActionListener(e -> loadItems());
-        cmbItem.addActionListener(e -> updateStockHint());
-
+        spnQuantity.setModel(new SpinnerNumberModel(1, 1, 999, 1));
+        tblCart.setModel(cartModel);
+        lblTotal.setText("Total: " + RUPIAH.format(0));
         refresh();
     }
 
-    /** Form customer, hewan, jenis item, jumlah, dan catatan. */
-    private JPanel buildForm() {
-        JPanel form = new JPanel(new GridBagLayout());
-        form.setBorder(BorderFactory.createTitledBorder("Data Transaksi"));
-        GridBagConstraints c = new GridBagConstraints();
-        c.insets = new Insets(4, 4, 4, 4);
-        c.anchor = GridBagConstraints.LINE_START;
-        c.fill = GridBagConstraints.HORIZONTAL;
-
-        addField(form, c, 0, 0, "Customer", cmbCustomer);
-        addField(form, c, 1, 0, "Hewan", cmbPet);
-        addField(form, c, 0, 1, "Jenis Item", cmbItemType);
-        addField(form, c, 1, 1, "Item", cmbItem);
-        addField(form, c, 0, 2, "Jumlah", spnQuantity);
-
-        c.gridx = 1;
-        c.gridy = 2;
-        form.add(lblStock, c);
-
-        c.gridx = 0;
-        c.gridy = 3;
-        c.anchor = GridBagConstraints.FIRST_LINE_START;
-        form.add(new JLabel("Catatan"), c);
-        c.gridx = 1;
-        form.add(new JScrollPane(txtNotes), c);
-        return form;
+    private void cmbCustomerActionPerformed(java.awt.event.ActionEvent evt) {
+        loadPets();
     }
 
-    /** Tombol tambah, hapus, simpan, dan reset keranjang. */
-    private JPanel buildActions() {
-        JButton btnAdd = new JButton("Tambah ke Keranjang");
-        JButton btnRemove = new JButton("Hapus Item");
-        JButton btnSave = new JButton("Simpan Transaksi");
-        JButton btnReset = new JButton("Reset");
-
-        btnAdd.addActionListener(e -> addToCart());
-        btnRemove.addActionListener(e -> removeFromCart());
-        btnSave.addActionListener(e -> saveTransaction());
-        btnReset.addActionListener(e -> resetCart());
-
-        JPanel actions = new JPanel(new FlowLayout(FlowLayout.LEFT, 6, 4));
-        actions.add(btnAdd);
-        actions.add(btnRemove);
-        actions.add(btnSave);
-        actions.add(btnReset);
-        actions.add(lblTotal);
-        return actions;
+    private void cmbItemTypeActionPerformed(java.awt.event.ActionEvent evt) {
+        loadItems();
     }
 
-    /** Menaruh satu label dan satu komponen ke grid form. */
-    private static void addField(JPanel panel, GridBagConstraints c, int x, int y, String label, JComponent field) {
-        c.gridx = x;
-        c.gridy = y;
-        panel.add(new JLabel(label), c);
-        c.gridx = x + 1;
-        panel.add(field, c);
+    private void cmbItemActionPerformed(java.awt.event.ActionEvent evt) {
+        updateStockHint();
+    }
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {
+        addToCart();
+    }
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {
+        removeFromCart();
+    }
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {
+        saveTransaction();
+    }
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {
+        resetCart();
     }
 
     /** Memberi teks pengganti pada pilihan null di JComboBox. */
-    private static void installPlaceholderRenderer(JComboBox<?> combo, String placeholder) {
+    private static void installPlaceholderRenderer(javax.swing.JComboBox<?> combo, String placeholder) {
         combo.setRenderer(new DefaultListCellRenderer() {
             @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value, int index,
+            public java.awt.Component getListCellRendererComponent(javax.swing.JList<?> list, Object value, int index,
                     boolean isSelected, boolean cellHasFocus) {
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
                 if (value == null) {
@@ -311,4 +251,214 @@ public class CashierPanel extends JPanel implements Refreshable {
         }
         lblTotal.setText("Total: " + RUPIAH.format(current.calculateTotal()));
     }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        panelForm = new javax.swing.JPanel();
+        lblCustomer = new javax.swing.JLabel();
+        cmbCustomer = new javax.swing.JComboBox<>();
+        lblPet = new javax.swing.JLabel();
+        cmbPet = new javax.swing.JComboBox<>();
+        lblItemType = new javax.swing.JLabel();
+        cmbItemType = new javax.swing.JComboBox<>();
+        cmbItemType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Produk", "Layanan"}));
+        lblItem = new javax.swing.JLabel();
+        cmbItem = new javax.swing.JComboBox<>();
+        lblQuantity = new javax.swing.JLabel();
+        spnQuantity = new javax.swing.JSpinner();
+        lblStock = new javax.swing.JLabel();
+        lblNotes = new javax.swing.JLabel();
+        scrollPaneNotes = new javax.swing.JScrollPane();
+        txtNotes = new javax.swing.JTextArea();
+        scrollPaneCart = new javax.swing.JScrollPane();
+        tblCart = new javax.swing.JTable();
+        panelActions = new javax.swing.JPanel();
+        btnAdd = new javax.swing.JButton();
+        btnRemove = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
+        lblTotal = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(12, 12, 12, 12));
+
+        panelForm.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Transaksi"));
+
+        lblCustomer.setText("Customer");
+
+        cmbCustomer.addActionListener(this::cmbCustomerActionPerformed);
+
+        lblPet.setText("Hewan");
+
+        lblItemType.setText("Jenis Item");
+
+        cmbItemType.addActionListener(this::cmbItemTypeActionPerformed);
+
+        lblItem.setText("Item");
+
+        cmbItem.addActionListener(this::cmbItemActionPerformed);
+
+        lblQuantity.setText("Jumlah");
+
+        lblStock.setText("Stok tersedia: -");
+
+        lblNotes.setText("Catatan");
+
+        txtNotes.setColumns(20);
+        txtNotes.setRows(2);
+        txtNotes.setLineWrap(true);
+        txtNotes.setWrapStyleWord(true);
+        scrollPaneNotes.setViewportView(txtNotes);
+
+        javax.swing.GroupLayout panelFormLayout = new javax.swing.GroupLayout(panelForm);
+        panelForm.setLayout(panelFormLayout);
+        panelFormLayout.setHorizontalGroup(
+            panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFormLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCustomer)
+                    .addComponent(lblPet)
+                    .addComponent(lblItemType)
+                    .addComponent(lblItem)
+                    .addComponent(lblQuantity)
+                    .addComponent(lblNotes))
+                .addGap(18, 18, 18)
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbCustomer, 0, 180, Short.MAX_VALUE)
+                    .addComponent(cmbPet, 0, 180, Short.MAX_VALUE)
+                    .addComponent(cmbItemType, 0, 180, Short.MAX_VALUE)
+                    .addComponent(cmbItem, 0, 180, Short.MAX_VALUE)
+                    .addGroup(panelFormLayout.createSequentialGroup()
+                        .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblStock))
+                    .addComponent(scrollPaneNotes, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        panelFormLayout.setVerticalGroup(
+            panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFormLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCustomer)
+                    .addComponent(cmbCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPet)
+                    .addComponent(cmbPet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblItemType)
+                    .addComponent(cmbItemType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblItem)
+                    .addComponent(cmbItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblQuantity)
+                    .addComponent(spnQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStock))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNotes)
+                    .addComponent(scrollPaneNotes, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        scrollPaneCart.setViewportView(tblCart);
+
+        btnAdd.setText("Tambah ke Keranjang");
+        btnAdd.addActionListener(this::btnAddActionPerformed);
+
+        btnRemove.setText("Hapus Item");
+        btnRemove.addActionListener(this::btnRemoveActionPerformed);
+
+        btnSave.setText("Simpan Transaksi");
+        btnSave.addActionListener(this::btnSaveActionPerformed);
+
+        btnReset.setText("Reset");
+        btnReset.addActionListener(this::btnResetActionPerformed);
+
+        javax.swing.GroupLayout panelActionsLayout = new javax.swing.GroupLayout(panelActions);
+        panelActions.setLayout(panelActionsLayout);
+        panelActionsLayout.setHorizontalGroup(
+            panelActionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActionsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnAdd)
+                .addGap(6, 6, 6)
+                .addComponent(btnRemove)
+                .addGap(6, 6, 6)
+                .addComponent(btnSave)
+                .addGap(6, 6, 6)
+                .addComponent(btnReset)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTotal)
+                .addContainerGap())
+        );
+        panelActionsLayout.setVerticalGroup(
+            panelActionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActionsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelActionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdd)
+                    .addComponent(btnRemove)
+                    .addComponent(btnSave)
+                    .addComponent(btnReset)
+                    .addComponent(lblTotal))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(scrollPaneCart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelActions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createSequentialGroup()
+            .addComponent(panelForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(scrollPaneCart, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(panelActions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnRemove;
+    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox cmbCustomer;
+    private javax.swing.JComboBox cmbItem;
+    private javax.swing.JComboBox<String> cmbItemType;
+    private javax.swing.JComboBox cmbPet;
+    private javax.swing.JLabel lblCustomer;
+    private javax.swing.JLabel lblItem;
+    private javax.swing.JLabel lblItemType;
+    private javax.swing.JLabel lblNotes;
+    private javax.swing.JLabel lblPet;
+    private javax.swing.JLabel lblQuantity;
+    private javax.swing.JLabel lblStock;
+    private javax.swing.JLabel lblTotal;
+    private javax.swing.JPanel panelActions;
+    private javax.swing.JPanel panelForm;
+    private javax.swing.JScrollPane scrollPaneCart;
+    private javax.swing.JScrollPane scrollPaneNotes;
+    private javax.swing.JSpinner spnQuantity;
+    private javax.swing.JTable tblCart;
+    private javax.swing.JTextArea txtNotes;
+    // End of variables declaration//GEN-END:variables
 }
