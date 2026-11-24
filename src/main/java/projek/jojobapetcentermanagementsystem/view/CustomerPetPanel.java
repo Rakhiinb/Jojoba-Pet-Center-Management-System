@@ -80,7 +80,6 @@ public class CustomerPetPanel extends javax.swing.JPanel implements Refreshable 
         txtPetName = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         cmbSpecies = new javax.swing.JComboBox<>();
-        jPanel6 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         cmbGender = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
@@ -216,44 +215,40 @@ public class CustomerPetPanel extends javax.swing.JPanel implements Refreshable 
         pnlPet.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
         pnlPetForm.setPreferredSize(new java.awt.Dimension(780, 120));
-        pnlPetForm.setLayout(new java.awt.GridLayout(3, 1, 0, 4));
+        pnlPetForm.setLayout(new java.awt.GridLayout(2, 1, 0, 4));
 
-        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 12, 5));
+        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 12, 15));
 
         jLabel8.setText("Nama");
-        jLabel8.setPreferredSize(new java.awt.Dimension(70, 20));
+        jLabel8.setPreferredSize(new java.awt.Dimension(50, 20));
         jLabel8.setRequestFocusEnabled(false);
         jPanel5.add(jLabel8);
 
-        txtPetName.setColumns(25);
+        txtPetName.setColumns(20);
         txtPetName.addActionListener(this::txtPetNameActionPerformed);
         jPanel5.add(txtPetName);
 
         jLabel9.setText("Jenis");
-        jLabel9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 30, 1, 1));
-        jLabel9.setPreferredSize(new java.awt.Dimension(120, 20));
+        jLabel9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 20, 1, 1));
+        jLabel9.setPreferredSize(new java.awt.Dimension(50, 20));
         jPanel5.add(jLabel9);
 
         cmbSpecies.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbSpecies.setPreferredSize(new java.awt.Dimension(180, 25));
+        cmbSpecies.setPreferredSize(new java.awt.Dimension(130, 25));
         jPanel5.add(cmbSpecies);
+
+        jLabel11.setText("Jenis Kelamin");
+        jLabel11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 20, 1, 1));
+        jLabel11.setPreferredSize(new java.awt.Dimension(100, 20));
+        jPanel5.add(jLabel11);
+
+        cmbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbGender.setPreferredSize(new java.awt.Dimension(130, 25));
+        jPanel5.add(cmbGender);
 
         pnlPetForm.add(jPanel5);
 
-        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 12, 5));
-
-        jLabel11.setText("Jenis Kelamin");
-        jLabel11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 30, 1, 1));
-        jLabel11.setPreferredSize(new java.awt.Dimension(120, 20));
-        jPanel6.add(jLabel11);
-
-        cmbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbGender.setPreferredSize(new java.awt.Dimension(180, 25));
-        jPanel6.add(cmbGender);
-
-        pnlPetForm.add(jPanel6);
-
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 12, 5));
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 12, 15));
 
         btnAddPet.setText("Tambah");
         btnAddPet.setPreferredSize(new java.awt.Dimension(110, 23));
@@ -652,7 +647,6 @@ public class CustomerPetPanel extends javax.swing.JPanel implements Refreshable 
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
