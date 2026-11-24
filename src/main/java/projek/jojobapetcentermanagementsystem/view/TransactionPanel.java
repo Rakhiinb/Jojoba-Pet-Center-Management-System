@@ -4,7 +4,11 @@
  */
 package projek.jojobapetcentermanagementsystem.view;
 
-/** Panel Transaksi: menggabungkan tab Kasir dan Riwayat. */
+/**
+ * Panel Transaksi: menggabungkan tab Kasir dan Riwayat.
+ *
+ * @author Raffi Fauzan (140810250067)
+ */
 public class TransactionPanel extends javax.swing.JPanel implements Refreshable {
 
     /**

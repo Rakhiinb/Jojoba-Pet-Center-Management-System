@@ -16,7 +16,11 @@ import projek.jojobapetcentermanagementsystem.entity.TransactionItem;
 import projek.jojobapetcentermanagementsystem.model.TransactionModel;
 import projek.jojobapetcentermanagementsystem.repository.TransactionRepository;
 
-/** Panel Riwayat: menampilkan transaksi per rentang tanggal dan rincian itemnya. */
+/**
+ * Panel Riwayat: menampilkan transaksi per rentang tanggal dan rincian itemnya.
+ *
+ * @author Raffi Fauzan (140810250067)
+ */
 public class HistoryPanel extends javax.swing.JPanel implements Refreshable {
 
     private static final String[] TRANSACTION_COLUMNS = {"ID", "Tanggal", "Customer", "Hewan", "Total"};
