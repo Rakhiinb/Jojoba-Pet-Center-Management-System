@@ -50,6 +50,24 @@ public class CustomerPetPanel extends javax.swing.JPanel {
         btnSearch = new javax.swing.JButton();
         btnShowAll = new javax.swing.JButton();
         pnlPet = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblPet = new javax.swing.JTable();
+        pnlPetForm = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        txtPetName = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        cmbSpecies = new javax.swing.JComboBox<>();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        txtPetBreed = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        cmbGender = new javax.swing.JComboBox<>();
+        jPanel7 = new javax.swing.JPanel();
+        btnAddPet = new javax.swing.JButton();
+        btnUpdatePet = new javax.swing.JButton();
+        btnDeletePet = new javax.swing.JButton();
+        btnClearPet = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(new java.awt.BorderLayout());
@@ -82,9 +100,11 @@ public class CustomerPetPanel extends javax.swing.JPanel {
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 5));
 
         jLabel6.setText("Nama");
+        jLabel6.setPreferredSize(new java.awt.Dimension(70, 16));
+        jLabel6.setRequestFocusEnabled(false);
         jPanel1.add(jLabel6);
 
-        txtCustName.setColumns(15);
+        txtCustName.setColumns(30);
         txtCustName.addActionListener(this::txtCustNameActionPerformed);
         jPanel1.add(txtCustName);
 
@@ -92,7 +112,7 @@ public class CustomerPetPanel extends javax.swing.JPanel {
         jLabel7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         jPanel1.add(jLabel7);
 
-        txtCustPhone.setColumns(12);
+        txtCustPhone.setColumns(20);
         jPanel1.add(txtCustPhone);
 
         pnlCustForm.add(jPanel1);
@@ -100,40 +120,46 @@ public class CustomerPetPanel extends javax.swing.JPanel {
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 5));
 
         jLabel1.setText("Alamat");
+        jLabel1.setPreferredSize(new java.awt.Dimension(70, 16));
         jPanel2.add(jLabel1);
 
-        txtCustAddress.setColumns(40);
+        txtCustAddress.setColumns(62);
         txtCustAddress.addActionListener(this::txtCustAddressActionPerformed);
         jPanel2.add(txtCustAddress);
 
         pnlCustForm.add(jPanel2);
 
-        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 5));
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 5));
 
         btnAddCustomer.setText("Tambah");
+        btnAddCustomer.setPreferredSize(new java.awt.Dimension(110, 23));
         jPanel3.add(btnAddCustomer);
 
         btnUpdateCustomer.setText("Ubah");
+        btnUpdateCustomer.setPreferredSize(new java.awt.Dimension(110, 23));
         jPanel3.add(btnUpdateCustomer);
 
         btnDeleteCustomer.setText("Hapus");
+        btnDeleteCustomer.setPreferredSize(new java.awt.Dimension(110, 23));
         jPanel3.add(btnDeleteCustomer);
 
         btnClearCustomer.setText("Bersihkan");
+        btnClearCustomer.setPreferredSize(new java.awt.Dimension(110, 23));
         jPanel3.add(btnClearCustomer);
 
         pnlCustForm.add(jPanel3);
 
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 5));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 5));
 
         jLabel2.setText("Cari Customer:");
         jPanel4.add(jLabel2);
 
-        txtSearch.setColumns(15);
+        txtSearch.setColumns(30);
         txtSearch.addActionListener(this::txtSearchActionPerformed);
         jPanel4.add(txtSearch);
 
         btnSearch.setText("Cari");
+        btnSearch.setPreferredSize(new java.awt.Dimension(90, 23));
         jPanel4.add(btnSearch);
 
         btnShowAll.setText("Tampilkan Semua");
@@ -147,6 +173,91 @@ public class CustomerPetPanel extends javax.swing.JPanel {
 
         pnlPet.setBorder(javax.swing.BorderFactory.createTitledBorder("Hewan milik Customer terpilih"));
         pnlPet.setLayout(new java.awt.BorderLayout());
+
+        tblPet.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblPet);
+
+        pnlPet.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        pnlPetForm.setPreferredSize(new java.awt.Dimension(780, 120));
+        pnlPetForm.setLayout(new java.awt.GridLayout(3, 1, 0, 4));
+
+        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 12, 5));
+
+        jLabel8.setText("Nama");
+        jLabel8.setPreferredSize(new java.awt.Dimension(70, 20));
+        jLabel8.setRequestFocusEnabled(false);
+        jPanel5.add(jLabel8);
+
+        txtPetName.setColumns(25);
+        txtPetName.addActionListener(this::txtPetNameActionPerformed);
+        jPanel5.add(txtPetName);
+
+        jLabel9.setText("Jenis");
+        jLabel9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 30, 1, 1));
+        jLabel9.setPreferredSize(new java.awt.Dimension(120, 20));
+        jPanel5.add(jLabel9);
+
+        cmbSpecies.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbSpecies.setPreferredSize(new java.awt.Dimension(180, 25));
+        jPanel5.add(cmbSpecies);
+
+        pnlPetForm.add(jPanel5);
+
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 12, 5));
+
+        jLabel10.setText("Ras");
+        jLabel10.setPreferredSize(new java.awt.Dimension(70, 20));
+        jLabel10.setRequestFocusEnabled(false);
+        jPanel6.add(jLabel10);
+
+        txtPetBreed.setColumns(25);
+        txtPetBreed.addActionListener(this::txtPetBreedActionPerformed);
+        jPanel6.add(txtPetBreed);
+
+        jLabel11.setText("Jenis Kelamin");
+        jLabel11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 30, 1, 1));
+        jLabel11.setPreferredSize(new java.awt.Dimension(120, 20));
+        jPanel6.add(jLabel11);
+
+        cmbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbGender.setPreferredSize(new java.awt.Dimension(180, 25));
+        jPanel6.add(cmbGender);
+
+        pnlPetForm.add(jPanel6);
+
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 12, 5));
+
+        btnAddPet.setText("Tambah");
+        btnAddPet.setPreferredSize(new java.awt.Dimension(110, 23));
+        jPanel7.add(btnAddPet);
+
+        btnUpdatePet.setText("Ubah");
+        btnUpdatePet.setPreferredSize(new java.awt.Dimension(110, 23));
+        jPanel7.add(btnUpdatePet);
+
+        btnDeletePet.setText("Hapus");
+        btnDeletePet.setPreferredSize(new java.awt.Dimension(110, 23));
+        jPanel7.add(btnDeletePet);
+
+        btnClearPet.setText("Bersihkan");
+        btnClearPet.setPreferredSize(new java.awt.Dimension(110, 23));
+        jPanel7.add(btnClearPet);
+
+        pnlPetForm.add(jPanel7);
+
+        pnlPet.add(pnlPetForm, java.awt.BorderLayout.PAGE_START);
+
         jSplitPane1.setRightComponent(pnlPet);
 
         add(jSplitPane1, java.awt.BorderLayout.CENTER);
@@ -164,31 +275,57 @@ public class CustomerPetPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
 
+    private void txtPetNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPetNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPetNameActionPerformed
+
+    private void txtPetBreedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPetBreedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPetBreedActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddCustomer;
+    private javax.swing.JButton btnAddPet;
     private javax.swing.JButton btnClearCustomer;
+    private javax.swing.JButton btnClearPet;
     private javax.swing.JButton btnDeleteCustomer;
+    private javax.swing.JButton btnDeletePet;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnShowAll;
     private javax.swing.JButton btnUpdateCustomer;
+    private javax.swing.JButton btnUpdatePet;
+    private javax.swing.JComboBox<String> cmbGender;
+    private javax.swing.JComboBox<String> cmbSpecies;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JPanel pnlCustForm;
     private javax.swing.JPanel pnlCustomer;
     private javax.swing.JPanel pnlPet;
+    private javax.swing.JPanel pnlPetForm;
     private javax.swing.JTable tblCustomer;
+    private javax.swing.JTable tblPet;
     private javax.swing.JTextField txtCustAddress;
     private javax.swing.JTextField txtCustName;
     private javax.swing.JTextField txtCustPhone;
+    private javax.swing.JTextField txtPetBreed;
+    private javax.swing.JTextField txtPetName;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
