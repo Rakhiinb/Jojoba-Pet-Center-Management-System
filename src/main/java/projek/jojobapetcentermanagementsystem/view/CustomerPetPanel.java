@@ -16,7 +16,7 @@ import projek.jojobapetcentermanagementsystem.repository.PetRepository;
 
 /**
  *
- * @author ASUS Vivobook Dhifa
+ * @author Rakhi Nathan Bertantra (140810250060)
  */
 public class CustomerPetPanel extends javax.swing.JPanel implements Refreshable {
 

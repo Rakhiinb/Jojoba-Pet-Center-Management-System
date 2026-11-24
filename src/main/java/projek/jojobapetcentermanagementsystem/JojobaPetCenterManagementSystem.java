@@ -8,7 +8,7 @@ import projek.jojobapetcentermanagementsystem.view.MainFrame;
 
 /**
  *
- * @author ASUS Vivobook Dhifa
+ * @author Rakhi Nathan Bertantra (140810250060)
  */
 public class JojobaPetCenterManagementSystem {
 
