@@ -35,14 +35,14 @@ public class TransactionPanel extends javax.swing.JPanel implements Refreshable 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cashierPanel = new projek.jojobapetcentermanagementsystem.view.CashierPanel();
-        historyPanel = new projek.jojobapetcentermanagementsystem.view.HistoryPanel();
         tabs = new javax.swing.JTabbedPane();
+        historyPanel = new projek.jojobapetcentermanagementsystem.view.HistoryPanel();
+        cashierPanel = new projek.jojobapetcentermanagementsystem.view.CashierPanel();
 
         setPreferredSize(new java.awt.Dimension(800, 600));
 
-        tabs.addTab("Kasir", cashierPanel);
         tabs.addTab("Riwayat", historyPanel);
+        tabs.addTab("Kasir", cashierPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

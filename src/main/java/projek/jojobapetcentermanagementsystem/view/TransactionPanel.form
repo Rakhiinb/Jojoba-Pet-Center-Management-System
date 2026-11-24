@@ -32,18 +32,10 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="tabs">
+
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="projek.jojobapetcentermanagementsystem.view.CashierPanel" name="cashierPanel">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Kasir">
-                <Property name="tabTitle" type="java.lang.String" value="Kasir"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-        </Container>
-        <Container class="projek.jojobapetcentermanagementsystem.view.HistoryPanel" name="historyPanel">
+        <Component class="projek.jojobapetcentermanagementsystem.view.HistoryPanel" name="historyPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Riwayat">
@@ -51,7 +43,16 @@
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
-        </Container>
+        </Component>
+        <Component class="projek.jojobapetcentermanagementsystem.view.CashierPanel" name="cashierPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Kasir">
+                <Property name="tabTitle" type="java.lang.String" value="Kasir"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
