@@ -104,9 +104,6 @@ public class DashboardPanel extends javax.swing.JPanel implements Refreshable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlLowStock = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblLowStock = new javax.swing.JTable();
         pnlCards = new javax.swing.JPanel();
         pnlCardCustomers = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -126,27 +123,12 @@ public class DashboardPanel extends javax.swing.JPanel implements Refreshable {
         pnlCardRevenue = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         lblTodayRevenue = new javax.swing.JLabel();
+        pnlLowStock = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblLowStock = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(800, 600));
         setLayout(new java.awt.BorderLayout());
-
-        pnlLowStock.setBorder(javax.swing.BorderFactory.createTitledBorder("Produk Stok Menipis"));
-        pnlLowStock.setLayout(new java.awt.BorderLayout());
-
-        tblLowStock.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tblLowStock);
-
-        pnlLowStock.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pnlCards.setBorder(javax.swing.BorderFactory.createTitledBorder("Ringkasan"));
         pnlCards.setPreferredSize(new java.awt.Dimension(780, 200));
@@ -236,7 +218,25 @@ public class DashboardPanel extends javax.swing.JPanel implements Refreshable {
 
         pnlCards.add(pnlCardRevenue);
 
-        pnlLowStock.add(pnlCards, java.awt.BorderLayout.PAGE_START);
+        add(pnlCards, java.awt.BorderLayout.PAGE_START);
+
+        pnlLowStock.setBorder(javax.swing.BorderFactory.createTitledBorder("Produk Stok Menipis"));
+        pnlLowStock.setLayout(new java.awt.BorderLayout());
+
+        tblLowStock.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblLowStock);
+
+        pnlLowStock.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         add(pnlLowStock, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
