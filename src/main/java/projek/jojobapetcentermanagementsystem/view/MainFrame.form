@@ -31,7 +31,7 @@
               <Component id="panelSidebar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="panelContent" min="-2" pref="0" max="-2" attributes="0"/>
-              <EmptySpace pref="4497" max="32767" attributes="0"/>
+              <EmptySpace pref="723" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
